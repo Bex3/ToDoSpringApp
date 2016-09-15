@@ -25,8 +25,9 @@ public class ToDoSpringController {
     public String login(HttpSession session, String userName, String password) throws Exception {
         User user = users.findFirstByName(userName);
         if (user == null) {
-            user = new User(userName, password);
-            users.save(user);
+            session.invalidate();
+//            user = new User(userName, password);
+//            users.save(user);
         } else if (!password.equals(user.getPassword())) {
             throw new Exception("Incorrect password");
         }
