@@ -1,0 +1,40 @@
+<html>
+<body>
+
+{{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Login</button>
+</form>
+{{/user}}
+
+{{#user}}
+Welcome, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<br><br>
+
+
+<form action="/searchByName" method="get">
+    <input type="text" placeholder="Search by Name" name="search"/>
+    <button type="submit">Search</button>
+</form>
+
+<br/><br/>
+
+<form action="/add-game" method="post">
+    <input type="text" placeholder="Name" name="todoText"/>
+    <select name="isDone">
+        <option selected disabled>Is the task completed?</option>
+        <option value="Yes">Boss</option>
+        <option value="No">Decent</option>
+    </select>
+    <button type="submit">Logout</button>
+
+</form>
+
+{{/user}}
+</body>
+</html>
