@@ -35,10 +35,11 @@ public class ToDoItem {
     Boolean isDone;
 
 
-    public ToDoItem(String todotext, boolean isDone) {
+    public ToDoItem(String todotext, Boolean isDone, User user) {
         System.out.println("building a new todoitem with text = " + todotext);
         this.todotext = todotext;
         this.isDone = isDone;
+        this.user = user;
     }
 
     public ToDoItem() {

@@ -41,7 +41,7 @@ public class ToDoSpringController {
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(Model model, HttpSession session, String genre, Integer releaseYear, String gameStat) { // not making the Integer an int since int/primitaive types initialized by default - so it doesn't work for !null here
+    public String home(Model model, HttpSession session, String todotext, Boolean isdone) {
 
         if (session.getAttribute("user") != null) {
             model.addAttribute("user", session.getAttribute("user"));
@@ -60,5 +60,23 @@ public class ToDoSpringController {
             }
         model.addAttribute("todos",toDoItemList);
         return "home";
+    }
+
+    @RequestMapping(path = "/addtodos", method = RequestMethod.POST)
+    public String addToDoText(HttpSession session, String todotext, Boolean isDone) {
+        User user = (User) session.getAttribute("user");
+        ToDoItem todo = new ToDoItem(todotext, isDone, user);
+        System.out.println("My runtime repo: " + todo.toString());
+        todos.save(todo); //uses the repo to save it
+        return "redirect:/";
+    }
+
+    @RequestMapping(path = "/delete", method = RequestMethod.GET)
+    public String deletetodo(Model model, Integer todoID) {
+        if (todoID != null) {
+            todos.delete(todoID);
+        }
+
+        return "redirect:/";
     }
 }

@@ -17,23 +17,23 @@ Welcome, {{name}}!
 <br><br>
 
 
-<form action="/searchByName" method="get">
-    <input type="text" placeholder="Search by Name" name="search"/>
-    <button type="submit">Search</button>
-</form>
-
-<br/><br/>
-
-<form action="/add-game" method="post">
-    <input type="text" placeholder="Name" name="todoText"/>
+<form action="/addtodos" method="post">
+    <input type="text" placeholder="Task Text" name="todotext"/>
     <select name="isDone">
         <option selected disabled>Is the task completed?</option>
-        <option value="Yes">Boss</option>
-        <option value="No">Decent</option>
+        <option value="True">Yes</option>
+        <option value="False">No</option>
     </select>
-    <button type="submit">Logout</button>
+    <button type="submit">Add Item</button>
 
 </form>
+
+<ol>
+    {{#todos}}
+    <li>{{todotext}} {{isDone}}
+        <a href="/delete?todoID={{id}}">remove</a></li>
+        {{/todos}}
+</ol>
 
 {{/user}}
 </body>
