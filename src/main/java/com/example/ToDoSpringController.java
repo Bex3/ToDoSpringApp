@@ -80,4 +80,9 @@ public class ToDoSpringController {
 
         return "redirect:/";
     }
+    @RequestMapping(path = "/todos", method = RequestMethod.GET)
+    public String todo(String todotext, Boolean isDone) {
+        return "todos";
+    }
+
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="TIYAngularToDoApp">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/tiy-ng-controller.js"></script> <!--relative path based on where you currently are different for webserver & local-->
+<script src="../static/js/tiy-ng-controller.js"> </script>
+<body ng-controller="SampleController">
+
+<!--
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+-->
+<!-- angular never sees the info above since mustache pre-process the html, mustache still sees this since it doesn't care about html or the comments-->
+
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+
+
+    <input type="button" ng-click="getAllToDos()" value="Refresh ToDo Data"/>
+
+</div>
+
+
+<div style="position: relative; float: left; width: 40%; padding: 20px;">
+    <h2>ToDo List</h2>
+    <ul>
+        <li ng-repeat="todoitems in todos"> <!--ng-repeat is like a for loop in java-->
+            {{todos}}
+            <button ng-click="deleteToDo(todoitem.id)">delete</button>
+            <button ng-click="toggleToDo(todoitem.id)">toggle</button>
+        </li>
+    </ul>
+</div>
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+    <h1>Enter new Todo information</h1>
+    <span> New Todo: <input type="text" ng-model="newToDo.name"/></span>
+    <span>  <input type="button" ng-click="addToDo()" value="Create new ToDo Item"/></span>
+
+</div>
+
+</body>
+</html>
