@@ -35,6 +35,30 @@ public class ToDoItem {
     Boolean isDone;
 
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getTodotext() {
+        return todotext;
+    }
+
+    public void setTodotext(String todotext) {
+        this.todotext = todotext;
+    }
+
+    public Boolean getDone() {
+        return isDone;
+    }
+
+    public void setDone(Boolean done) {
+        isDone = done;
+    }
+
     public ToDoItem(String todotext, Boolean isDone, User user) {
         System.out.println("building a new todoitem with text = " + todotext);
         this.todotext = todotext;
