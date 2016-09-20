@@ -32,7 +32,7 @@ public class ToDoItem {
     String todotext;
 
     @Column(nullable = false)
-    Boolean isDone;
+    boolean isDone;
 
 
     public User getUser() {
@@ -51,15 +51,23 @@ public class ToDoItem {
         this.todotext = todotext;
     }
 
-    public Boolean getDone() {
+//    public Boolean getDone() {
+//        return isDone;
+//    }
+//
+//    public void setDone(Boolean done) {
+//        isDone = done;
+//    }
+
+    public boolean isDone() {
         return isDone;
     }
 
-    public void setDone(Boolean done) {
+    public void setDone(boolean done) {
         isDone = done;
     }
 
-    public ToDoItem(String todotext, Boolean isDone, User user) {
+    public ToDoItem(String todotext, boolean isDone, User user) {
         System.out.println("building a new todoitem with text = " + todotext);
         this.todotext = todotext;
         this.isDone = isDone;

@@ -22,9 +22,9 @@ angular.module('TIYAngularToDoApp', [])
         };
 
         $scope.addToDo = function() {
-                    console.log("About to add this item to the todo list" + JSON.stringify($scope.newTodoItem));
+                    console.log("About to add this item to the todo list" + JSON.stringify($scope.newToDoItem));
 
-                    $http.post("/addToDo.json", $scope.newTodoItem)
+                    $http.post("/addToDo.json", $scope.newToDoItem)// this is the one and only connection between the front & back end
                         .then(
                             function successCallback(response) {
                                 console.log(response.data);
@@ -36,6 +36,6 @@ angular.module('TIYAngularToDoApp', [])
                             });
         };
 
-        $scope.newTodoItem = {};
+        $scope.newToDoItem = {};
 
     });

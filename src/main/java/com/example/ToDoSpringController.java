@@ -32,7 +32,7 @@ public class ToDoSpringController {
             throw new Exception("Incorrect password");
         }
         session.setAttribute("user", user);
-        return "redirect:/";
+        return "redirect:/todos";
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
