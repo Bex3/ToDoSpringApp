@@ -1,6 +1,8 @@
 angular.module('TIYAngularToDoApp', [])
    .controller('SampleController', function($scope, $http) {
 
+    $scope.testValue = "testing here";
+
 
         $scope.getAllToDos = function() {
                console.log("About to go get me some data!");

@@ -12,6 +12,8 @@
 -->
 <!-- angular never sees the info above since mustache pre-process the html, mustache still sees this since it doesn't care about html or the comments-->
 
+{{testValue}}
+
 <div style="position: relative; float: left; width: 100%; padding: 20px;">
 
 
@@ -19,12 +21,11 @@
 
 </div>
 
-
 <div style="position: relative; float: left; width: 40%; padding: 20px;">
     <h2>ToDo List</h2>
     <ul>
-        <li ng-repeat="todoitems in todoList"> <!--ng-repeat is like a for loop in java-->
-            {{todoitem.todotext}} - {{todoitem.isDone}}
+        <li ng-repeat="todoitem in todoList"> <!--ng-repeat is like a for loop in java-->
+            {{todoitem.todotext}}- {{todoitem.isDone}}
             <button ng-click="deleteToDo(todoitemitem.id)">delete</button>
             <button ng-click="toggleToDo(todoitemitem.id)">toggle</button>
         </li>
