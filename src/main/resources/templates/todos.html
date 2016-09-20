@@ -23,16 +23,26 @@
 <div style="position: relative; float: left; width: 40%; padding: 20px;">
     <h2>ToDo List</h2>
     <ul>
-        <li ng-repeat="todoitems in todos"> <!--ng-repeat is like a for loop in java-->
-            {{todos}}
-            <button ng-click="deleteToDo(todoitem.id)">delete</button>
-            <button ng-click="toggleToDo(todoitem.id)">toggle</button>
+        <li ng-repeat="todoitems in todoList"> <!--ng-repeat is like a for loop in java-->
+            {{todoitem.todotext}} - {{todoitem.isDone}}
+            <button ng-click="deleteToDo(todoitemitem.id)">delete</button>
+            <button ng-click="toggleToDo(todoitemitem.id)">toggle</button>
         </li>
     </ul>
 </div>
 <div style="position: relative; float: left; width: 100%; padding: 20px;">
     <h1>Enter new Todo information</h1>
-    <span> New Todo: <input type="text" ng-model="newToDo.name"/></span>
+    <span> New Todo: <input type="text" ng-model="newToDoItem.name"/></span>
+    <span>
+        <select name="Has this item been completed?" ng-model="newToDoItem.isDone">
+            <option selected disabled>isDone</option>
+            <option value="Yes">Yes</option>
+            <option value="No"> No</option>
+        </select>
+    </span>
+
+
+
     <span>  <input type="button" ng-click="addToDo()" value="Create new ToDo Item"/></span>
 
 </div>
