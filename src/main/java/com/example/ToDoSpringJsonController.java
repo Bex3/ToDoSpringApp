@@ -39,6 +39,9 @@ public class ToDoSpringJsonController {
 
         return todoList;
     }
+
+
+
     @RequestMapping(path = "/addToDo.json", method = RequestMethod.POST) //post & rest combined means that we take the game signaled at the rest controller and turn it into a java object
     public ArrayList<ToDoItem> addToDoItem(HttpSession session, @RequestBody ToDoItem todoitem) throws Exception {
         User user = (User)session.getAttribute("user");
@@ -54,6 +57,26 @@ public class ToDoSpringJsonController {
         System.out.println(todoitem.isDone);
 
         todos.save(todoitem);
+
+        return getToDos();
+    }
+
+    @RequestMapping(path = "/toggleToDo.json", method = RequestMethod.GET)
+    public ArrayList<ToDoItem> toggleTodo(int todoID) {
+        System.out.println("toggling todo with ID " + todoID);
+        ToDoItem todo = todos.findOne(todoID);
+        todo.isDone = !todo.isDone;
+        todos.save(todo);
+
+
+        return getToDos();
+    }
+
+    @RequestMapping(path = "/deleteToDoItem", method = RequestMethod.GET)
+    public ArrayList<ToDoItem> deleteTodo(int todoID) {
+        System.out.println("Deleting todo with ID " + todoID);
+        ToDoItem todo = todos.findOne(todoID);
+        todos.delete(todo);
 
         return getToDos();
     }

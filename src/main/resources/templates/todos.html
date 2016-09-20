@@ -38,7 +38,12 @@
     <h2>ToDo List</h2>
     <ul>
         <li ng-repeat="todoitem in todos"> <!--ng-repeat is like a for loop in java-->
-            {{todoitem.todotext}}- {{todoitem.isDone}}
+            {{todoitem.user.name}}
+            {{todoitem.todotext}}
+            {{todoitem.isDone}}
+
+            <button ng-click="toggleToDo(todoitem.id)">toggle</button>
+
             <button ng-click="deleteToDo(todoitem.id)">delete</button>
         </li>
     </ul>

@@ -22,19 +22,57 @@ angular.module('TIYAngularToDoApp', [])
         };
 
         $scope.addToDo = function() {
-                    console.log("About to add this item to the todo list" + JSON.stringify($scope.newToDoItem));
+               console.log("About to add this item to the todo list" + JSON.stringify($scope.newToDoItem));
 
-                    $http.post("/addToDo.json", $scope.newToDoItem)// this is the one and only connection between the front & back end
+               $http.post("/addToDo.json", $scope.newToDoItem)// this is the one and only connection between the front & back end
+                   .then(
+                       function successCallback(response) {
+                           console.log(response.data);
+                           console.log("Adding data to scope");
+                           $scope.todos = response.data;
+                      },
+                      function errorCallback(response) {
+                          console.log("Unable to get data");
+                      });
+        };
+
+        $scope.toggleToDo = function(todoID) {
+                    console.log("About to toggle todo with ID " + todoID);
+
+                    $http.get("/toggleToDo.json?todoID=" + todoID)
+                        .then(
+                            function success(response) {
+                                console.log(response.data);
+                                console.log("Todo toggled");
+
+                                $scope.games = {};
+                                alert("About to refresh the todos on the scope"); //pauses the execution of the js code
+
+                                $scope.games = response.data;
+                            },
+                            function error(response) {
+                                console.log("Unable to toggle todo");
+                            });
+        };
+
+        $scope.deleteToDo = function(todoID) {
+
+                    $http.get("/deleteToDoItem?todoID=" + todoID)// this is the one and only connection between the front & back end
                         .then(
                             function successCallback(response) {
                                 console.log(response.data);
-                                console.log("Adding data to scope");
+                                console.log("Deleting data on scope");
+
+                                $scope.todos = {};
+                                alert("About to refresh the todos on the scope");
+
                                 $scope.todos = response.data;
                             },
                             function errorCallback(response) {
-                                console.log("Unable to get data");
+                                console.log("Unable to delete data");
                             });
         };
+
 
         $scope.newToDoItem = {};
 
