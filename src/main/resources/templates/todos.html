@@ -40,7 +40,7 @@
         <li ng-repeat="todoitem in todos"> <!--ng-repeat is like a for loop in java-->
             {{todoitem.user.name}}
             {{todoitem.todotext}}
-            {{todoitem.isDone}}
+            {{todoitem.done}}
 
             <button ng-click="toggleToDo(todoitem.id)">toggle</button>
 

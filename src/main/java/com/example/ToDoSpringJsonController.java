@@ -32,8 +32,8 @@ public class ToDoSpringJsonController {
 
     ArrayList<ToDoItem> getToDos() {
         ArrayList<ToDoItem> todoList = new ArrayList<ToDoItem>();
-        Iterable<ToDoItem> allGames = todos.findAll();
-        for (ToDoItem item : allGames) {
+        Iterable<ToDoItem> allTodos = todos.findAll();
+        for (ToDoItem item : allTodos) {
             todoList.add(item);
         }
 
@@ -47,7 +47,7 @@ public class ToDoSpringJsonController {
         User user = (User)session.getAttribute("user");
 
         if (user == null) {
-            throw new Exception("Unable to add game without an active user in the session");
+            throw new Exception("Unable to add a todo without an active user in the session");
         }
         todoitem.user = user;
 

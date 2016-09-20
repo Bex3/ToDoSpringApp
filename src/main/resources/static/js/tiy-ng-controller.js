@@ -45,10 +45,10 @@ angular.module('TIYAngularToDoApp', [])
                                 console.log(response.data);
                                 console.log("Todo toggled");
 
-                                $scope.games = {};
+                                $scope.todos = {};
                                 alert("About to refresh the todos on the scope"); //pauses the execution of the js code
 
-                                $scope.games = response.data;
+                                $scope.todos = response.data;
                             },
                             function error(response) {
                                 console.log("Unable to toggle todo");
