@@ -39,15 +39,15 @@ public class ToDoSpringJsonController {
 
         return todoList;
     }
-    @RequestMapping(path = "/addToDoItem.json", method = RequestMethod.POST) //post & rest combined means that we take the game signaled at the rest controller and turn it into a java object
-    public ArrayList<ToDoItem> addToDoItem(HttpSession session, @RequestBody ToDoItem item) throws Exception {
+    @RequestMapping(path = "/addToDo.json", method = RequestMethod.POST) //post & rest combined means that we take the game signaled at the rest controller and turn it into a java object
+    public ArrayList<ToDoItem> addToDoItem(HttpSession session, @RequestBody ToDoItem todoitem) throws Exception {
         User user = (User)session.getAttribute("user");
 //        if (user == null) {
 //            throw new Exception("Unable to add game without an active user in the session");
 //        }
-        item.user = user;
+        todoitem.user = user;
 
-        todos.save(item);
+        todos.save(todoitem);
 
         return getToDos();
     }

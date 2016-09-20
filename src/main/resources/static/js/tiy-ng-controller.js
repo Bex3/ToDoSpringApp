@@ -24,7 +24,7 @@ angular.module('TIYAngularToDoApp', [])
         $scope.addToDo = function() {
                     console.log("About to add this item to the todo list" + JSON.stringify($scope.newTodoItem));
 
-                    $http.post("/todos.json", $scope.newTodoItem)
+                    $http.post("/addToDo.json", $scope.newTodoItem)
                         .then(
                             function successCallback(response) {
                                 console.log(response.data);
