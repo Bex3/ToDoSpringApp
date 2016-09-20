@@ -24,7 +24,7 @@
 <div style="position: relative; float: left; width: 40%; padding: 20px;">
     <h2>ToDo List</h2>
     <ul>
-        <li ng-repeat="todoitem in todoList"> <!--ng-repeat is like a for loop in java-->
+        <li ng-repeat="todoitem in todos"> <!--ng-repeat is like a for loop in java-->
             {{todoitem.todotext}}- {{todoitem.isDone}}
             <button ng-click="deleteToDo(todoitemitem.id)">delete</button>
             <button ng-click="toggleToDo(todoitemitem.id)">toggle</button>
