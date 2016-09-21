@@ -19,24 +19,36 @@ public class ToDoSpringJsonController {
     @Autowired
     ToDoRepository todos;
 
+    User user;
+
     @RequestMapping(path = "/todos.json", method = RequestMethod.GET)
-    public ArrayList<ToDoItem> jsonHome(String todotext, Boolean isDone, User user) {
+    public ArrayList<ToDoItem> todosjson(HttpSession session) {
+        user = (User)session.getAttribute("user");
         ArrayList<ToDoItem> todoList = new ArrayList<ToDoItem>();
         Iterable<ToDoItem> allToDoItems = todos.findAll(); // hibernate (object relational mapping) uses the repo
+
+
         for (ToDoItem item : allToDoItems) {
             todoList.add(item);
         }
 
-        return todoList; // returns an object instead of a view b/c this is a restful webservice - only gives data
+
+
+        return getToDos(); // returns an object instead of a view b/c this is a restful webservice - only gives data
     }
 
     ArrayList<ToDoItem> getToDos() {
         ArrayList<ToDoItem> todoList = new ArrayList<ToDoItem>();
-        Iterable<ToDoItem> allTodos = todos.findAll();
-        for (ToDoItem item : allTodos) {
-            todoList.add(item);
-        }
+        Iterable<ToDoItem> allTodos = todos.findByUser(user);
+//        for (ToDoItem item : allTodos) {
+//            todoList.add(item);
+//        }
 
+        if (user != null){
+            for (ToDoItem item : allTodos) {
+                todoList.add(item);
+            }
+        }
         return todoList;
     }
 
